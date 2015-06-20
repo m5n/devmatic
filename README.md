@@ -2,7 +2,7 @@
 At a fundamental level, computers respond to events. What if, given a precise description of events, a computer program could be generated automatically? Implementation frameworks come and go, but a description of how a system should react to events is a lot more static. In other words, this project hopes to capture everything I know and is an attempt to make myself obsolete!
 
 ## Goal
-Go beyond scaffolding and prototyping and generate production-ready source code from an event description. I18N,  unit tests, everything. Users of this project would likely fill in some more JS details (by extension--no edits to the generated code of course) and provide CSS for the proper UI layout.
+Go beyond scaffolding and prototyping and generate production-ready source code from an event description. Internationalization, accessibility, unit tests, everything. Users of this project would likely fill in some more JS details (by extension--no edits to the generated code of course) and provide CSS for the proper UI layout.
 
 ## Roadmap
 1. Define a DSL to describe events
