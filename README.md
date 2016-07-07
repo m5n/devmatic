@@ -50,7 +50,7 @@ See any of the examples on http://todomvc.com/ for how the UI behaves.
 ```
 set all todos completed on toggle all checkbox change
 ==> $('checkbox.toggle-all').on('change', function (event) { todoItems.set({completed: $(event.target).prop('checked')}) })
-    <br>(Note the property name is "completed" for readability. Using "done" doesn't read well: set all todos done on toggle all checkbox change.)
+    (Note the property name is "completed" for readability. Using "done" doesn't read well: set all todos done on toggle all checkbox change.)
 
 edit todo on input doubleclick
 ==> $('.todo input').on('doubleclick', function (event) { $(event.target).closest('.todo').addClass('edit') })
