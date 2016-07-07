@@ -18,14 +18,14 @@ Syntax = &lt;command> &lt;object> on &lt;input> &lt;event>
 - create: create a new item (regardless if it already has an id; no built-in smarts)
 - destroy [all]: destroy one or all objects
 - destroy all ... with &lt;key=value>[,&lt;key=value>]*: destroy only objects with the given property value(s)
-  mnemonic: destroy all products with an expiration date over a year ago
+  <br>mnemonic: destroy all products with an expiration date over a year ago
 - show [all]: show one or all objects
 - show all ... with &lt;key=value>[,&lt;key=value>]*: show only objects with the given property value(s)
-  mnemonic: show all students with a gpa of 8.0
+  <br>mnemonic: show all students with a gpa of 8.0
 - set [all] ... &lt;key=value>[,&lt;key=value>]*: set the given property value(s) for one or all objects
-  mnemonic: set car color to blue on paint button click
+  <br>mnemonic: set car color to blue on paint button click
 - set [all] ... &lt;key>: set the given property to the current value of an input type for one or all objects
-  mnemonic: set car color on paint selection change (applies selected value as property value)
+  <br>mnemonic: set car color on paint selection change (applies selected value as property value)
 
 &lt;object> = user defined
 
@@ -48,8 +48,9 @@ Syntax = &lt;command> &lt;object> on &lt;input> &lt;event>
 See any of the examples on http://todomvc.com/ for how the UI behaves.
 
 ```
-set all todos done on toggle all checkbox change
-==> $('checkbox.toggle-all').on('change', function (event) { todoItems.set({done: $(event.target).prop('checked')}) })
+set all todos completed on toggle all checkbox change
+==> $('checkbox.toggle-all').on('change', function (event) { todoItems.set({completed: $(event.target).prop('checked')}) })
+    <br>(Note the property name is "completed" for readability. Using "done" doesn't read well: set all todos done on toggle all checkbox change.)
 
 edit todo on input doubleclick
 ==> $('.todo input').on('doubleclick', function (event) { $(event.target).closest('.todo').addClass('edit') })
@@ -63,8 +64,8 @@ create todo on input enter keypress
 create todo on input blur
 ==> $('.todo input').on('blur', function () { 1. save new todo, 2. add to set on success })
 
-set todo done on checkbox change
-==> $('.todo checkbox').on('change', function (event) { todo.set({done: $(event.target).prop('checked')}) })
+set todo completed on checkbox change
+==> $('.todo checkbox').on('change', function (event) { todo.set({completed: $(event.target).prop('checked')}) })
 
 destroy todo on remove button click
 ==> $('.todo button.remove').on('click', function () { todo.destroy() })
@@ -72,14 +73,14 @@ destroy todo on remove button click
 show all todos on show all button click
 ==> $('button.show-all').on('click', function () { todoItems.filter({}) })
 
-show all todos with done=false on show active button click
-==> $('button.show-active').on('click', function () { todoItems.filter({done: false}) })
+show all todos with completed=false on show active button click
+==> $('button.show-active').on('click', function () { todoItems.filter({completed: false}) })
 
-show all todos with done=true on show completed button click
-==> $('button.show-completed').on('click', function () { todoItems.filter({done: true}) })
+show all todos with completed=true on show completed button click
+==> $('button.show-completed').on('click', function () { todoItems.filter({completed: true}) })
 
-destroy all todos with done=true on clear completed button click
-==> $('button.clear-completed').on('click', function () { todoItems.destroy({done: true}) })
+destroy all todos with completed=true on clear completed button click
+==> $('button.clear-completed').on('click', function () { todoItems.destroy({completed: true}) })
 ```
 
 ## Roadmap
@@ -111,7 +112,7 @@ destroy all todos with done=true on clear completed button click
   this also removes the need to differentiate between flip state vs all the same state as "all" box, e.g. toggle(state) = force state, toggle() = flip
 * make singular/plural explicit via "all" (don't try to derive it from the user's object naming)
   TODO: so should &lt;object> always be singular? ("update all todo" vs "update all todos")
-  mnemonic: "update all todo done properTIES" and "update todo done properTY"
+  mnemonic: "update all todo completed properTIES" and "update todo completed properTY"
 * code gen: singular &lt;object> usage, so &lt;input> is somewhere within .object-name --> $('.object .selector')
 * code gen: no singular &lt;object> usage, so &lt;input> not tied to object (no ties to .todo-list ever as &lt;li> cannot contain arbitrary markup such as buttons!) --> NOT $('.object-list .selector') but just $('.selector')
 
@@ -122,6 +123,4 @@ destroy all todos with done=true on clear completed button click
   button = single-state control, checkbox = dual-state control or tri-state control, select = single-state or multi-state control
 
 ## TODOs
-* "update todo done on checkbox change" doesn't read well... how to make it better for boolean properties ("car color" reads fine)
-  done -> completed/completion, finished, active, done-state, is-done?
 * add/remove "hover" class automatically to &lt;object> usages on mouseover/out
